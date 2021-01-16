@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <input type="checkbox" :checked="todo.checked" @change="toggleCheckBox"/>
+    <div class="mb-2 d-flex">
+        <div>
+            <input type="checkbox" :checked="todo.checked" @change="toggleCheckBox"/>
+        </div>
         <span
             class="ml-3 flex-grow-1"
             :class="todo.checked ? 'text-muted' : ''"
