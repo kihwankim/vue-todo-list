@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="container">
         <h1 class="text-center">Todo App</h1>
-        <input type="text" class="w-100 p-2" placeholder="Type todo" @keyup.enter="addTodo"/>
+        <input type="text" v-model="todoText" class="w-100 p-2" placeholder="Type todo" @keyup.enter="addTodo"/>
         <hr/>
         <Todo v-for="todo in todos" :key="todo.id" :todo="todo"/>
     </div>
@@ -15,6 +15,7 @@
         },
         data() {
             return {
+                todoText: '',
                 increamentId: 0,
                 todos: [
                 ]
@@ -28,7 +29,7 @@
                   checked: false
                 });
                 this.increamentId += 1;
-                event.target.value = '';
+                this.todoText = '';
             }
         } // keyup.enter : enter button이 클릭 되면 일어나는 action
     }
