@@ -12,7 +12,9 @@
             v-for="todo in todos"
             :key="todo.id"
             :todo="todo"
-            @toggle-checkbox="toggleCheckBox"/>
+            @toggle-checkbox="toggleCheckBox"
+            @click-delete="deleteTodo"
+        />
     </div>
 </template>
 
@@ -38,6 +40,9 @@
                   return todo.id === id;
                 });
                 this.todos[index].checked = checked;
+            },
+            deleteTodo(id) {
+              this.todos = this.todos.filter(todo => todo.id !== id);
             }
         } // keyup.enter : enter button이 클릭 되면 일어나는 action
     }

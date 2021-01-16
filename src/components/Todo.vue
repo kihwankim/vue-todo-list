@@ -2,10 +2,11 @@
     <div>
         <input type="checkbox" :checked="todo.checked" @change="toggleCheckBox"/>
         <span
-            class="ml-3"
+            class="ml-3 flex-grow-1"
             :class="todo.checked ? 'text-muted' : ''"
             :style="todo.checked ? 'text-decoration: line-through': ''"
         >{{ todo.text }}</span>
+        <button class="btn btn-danger btn-sm" @click="clickDelete">Delete</button>
     </div>
 </template>
 
@@ -23,6 +24,9 @@
                     id: this.todo.id,
                     checked: event.target.checked
                 });
+            },
+            clickDelete() {
+                this.$emit('click-delete', this.todo.id);
             }
         }
     }
