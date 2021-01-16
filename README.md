@@ -1,4 +1,4 @@
-# todo-vue
+# todo list toy project
 
 ## Project setup
 ```
