@@ -8,14 +8,17 @@
 import { mapState } from 'vuex';
 export default {
     computed: {
-        ...mapState({
-            allTodo: 'todos'
+        // ...mapState({
+        //     allTodo: state => state.todo.todos
+        // }),
+        ...mapState('todo', {
+            allTodo: state => state.todos
         }),
         // todos() {
         //     return this.$store.state.todos; 
         // },
         numberOfCompletedTodo() {
-            return this.$store.getters.numberOfCompletedTodo;
+            return this.$store.getters['todo/numberOfCompletedTodo'];
         }
     }
 }

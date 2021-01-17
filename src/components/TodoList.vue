@@ -17,7 +17,7 @@ import Todo from '@/components/Todo.vue';
         },
         computed: {
             todos() {
-                return this.$store.state.todos;
+                return this.$store.state.todo.todos; // module 이름 추가
             }
         }
     }

@@ -22,13 +22,13 @@
         },
         methods: {
             toggleCheckBox(event) {
-                this.$store.commit('TOGGLE_TODO', {
+                this.$store.commit('todo/TOGGLE_TODO', {
                     id: this.todo.id,
                     checked: event.target.checked
                 });
             },
             clickDelete() {
-                this.$store.commit('DELETE_TODO', this.todo.id);
+                this.$store.commit('todo/DELETE_TODO', this.todo.id);
             }
         }
     }
