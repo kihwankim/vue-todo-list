@@ -8,21 +8,18 @@
             placeholder="Type todo"
             @keyup.enter="addTodo"/>
         <hr/>
-        <Todo
-            v-for="todo in todos"
-            :key="todo.id"
-            :todo="todo"
+        <TodoList
+            :todos="todos"
             @toggle-checkbox="toggleCheckBox"
-            @click-delete="deleteTodo"
-        />
+            @click-delete="deleteTodo"/>
     </div>
 </template>
 
 <script>
-    import Todo from '@/components/Todo.vue'
+    import TodoList from '@/components/TodoList.vue';
     export default {
         components: {
-            Todo
+            TodoList
         },
         data() {
             return {todoText: '', increamentId: 0, todos: []}
@@ -36,13 +33,19 @@
                 this.todoText = '';
             },
             toggleCheckBox({id, checked}) {
-                const index = this.todos.findIndex(todo => {
-                  return todo.id === id;
-                });
-                this.todos[index].checked = checked;
+                const index = this
+                    .todos
+                    .findIndex(todo => {
+                        return todo.id === id;
+                    });
+                this
+                    .todos[index]
+                    .checked = checked;
             },
             deleteTodo(id) {
-              this.todos = this.todos.filter(todo => todo.id !== id);
+                this.todos = this
+                    .todos
+                    .filter(todo => todo.id !== id);
             }
         } // keyup.enter : enter button이 클릭 되면 일어나는 action
     }
