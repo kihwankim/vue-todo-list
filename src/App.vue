@@ -1,12 +1,8 @@
 <template>
     <div id="app" class="container">
         <h1 class="text-center">Todo App</h1>
-        <input
-            type="text"
-            v-model="todoText"
-            class="w-100 p-2"
-            placeholder="Type todo"
-            @keyup.enter="addTodo"/>
+        <CompletedTodo :todos="todos"/>
+        <AddTodo @add-todo="addTodo"/>
         <hr/>
         <TodoList
             :todos="todos"
@@ -17,12 +13,16 @@
 
 <script>
     import TodoList from '@/components/TodoList.vue';
+    import AddTodo from '@/components/AddTodo.vue';
+    import CompletedTodo from '@/components/CompletedTodo.vue';
     export default {
         components: {
-            TodoList
+            TodoList,
+            AddTodo,
+            CompletedTodo
         },
         data() {
-            return {todoText: '', increamentId: 0, todos: []}
+            return {increamentId: 0, todos: []}
         },
         methods: {
             addTodo(event) {
@@ -30,7 +30,6 @@
                     .todos
                     .push({id: this.increamentId, text: event.target.value, checked: false});
                 this.increamentId += 1;
-                this.todoText = '';
             },
             toggleCheckBox({id, checked}) {
                 const index = this
