@@ -8,9 +8,9 @@
 import { mapState } from 'vuex';
 export default {
     computed: {
-        ...mapState([
-            'todos'
-        ]),
+        ...mapState({
+            allTodo: 'todos'
+        }),
         // todos() {
         //     return this.$store.state.todos; 
         // },
