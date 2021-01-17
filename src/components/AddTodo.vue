@@ -16,7 +16,7 @@
         },
         methods: {
             addTodo(event) {
-                this.$emit('add-todo', event);
+                this.$store.commit('ADD_TODO', event.target.value);
                 this.todoText = '';
             }
         }
