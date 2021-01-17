@@ -5,11 +5,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     computed: {
-        todos() {
-            return this.$store.state.todos; 
-        },
+        ...mapState([
+            'todos'
+        ]),
+        // todos() {
+        //     return this.$store.state.todos; 
+        // },
         numberOfCompletedTodo() {
             return this.$store.getters.numberOfCompletedTodo;
         }
