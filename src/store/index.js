@@ -41,6 +41,8 @@ export default new Vuex.Store({
         }
     }, // 함수가 들어가는 공간(데이터를 가져오는 곳) -> 비동기 처리 하는 곳
     getters: {
-
+        numberOfCompletedTodo: state => {
+            return state.todos.filter(todo => todo.checked).length; // vuex 에서 계산 된 값을 가져 올 수 있음
+        }
     } // coputed랑 비슷한 공간
 });
