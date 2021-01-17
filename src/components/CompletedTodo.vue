@@ -5,16 +5,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-    props: {
-        todos: {
-            type: Array,
-            required: true
-        }
-    },
     computed: {
+        // ...mapState({
+        //     allTodo: state => state.todo.todos
+        // }),
+        ...mapState('todo', {
+            allTodo: state => state.todos
+        }),
+        // todos() {
+        //     return this.$store.state.todos; 
+        // },
         numberOfCompletedTodo() {
-            return this.todos.filter(todo => todo.checked).length;
+            return this.$store.getters['todo/numberOfCompletedTodo'];
         }
     }
 }
