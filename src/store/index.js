@@ -32,8 +32,13 @@ export default new Vuex.Store({
             state.todos.splice(index, 1);
         }
     }, // 데이터 변경이 일어 나는 공간
-    actions: {
-
+    actions: { // 비동기 작업이 하는 공간
+        addTodo(context, value) {
+            // axios.post()
+            setTimeout(function () {
+                context.commit('ADD_TODO', value);
+            }, 1000); // post requst를 예시로 넣어준 것
+        }
     }, // 함수가 들어가는 공간(데이터를 가져오는 곳) -> 비동기 처리 하는 곳
     getters: {
 
